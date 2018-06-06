@@ -1,0 +1,32 @@
+form.tasting {
+  display: flex;
+  justify-content: center;
+  flex-flow: wrap;
+  max-width: 500px;
+  margin: 10px auto;
+}
+.tasting > input,
+.tasting textarea {
+  margin: 15px;
+}
+.tasting button {
+  display: block;
+  width: 100%;
+  margin: 0 15px 15px;
+}
+.form-header,
+input,
+textarea,
+.input-group.number {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  form.tasting .small {
+    width: calc(49.95% - 30px);
+  }
+}
+.input-group.number {
+  padding: 15px;
+}
