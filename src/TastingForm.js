@@ -8,6 +8,7 @@ class TastingForm extends Component {
   tastedateRef = React.createRef();
   beverageRef = React.createRef();
   ratingRef = React.createRef();
+  notebook = {};
   saveCoffee = e => {
     e.preventDefault();
     let coffee = {
@@ -19,8 +20,8 @@ class TastingForm extends Component {
       beverage: this.beverageRef.current.value,
       rating: this.ratingRef.current.value
     };
-
-    console.log(coffee);
+    this.notebook[Date.now()] = coffee;
+    console.log(this.notebook);
   };
   render() {
     return (
