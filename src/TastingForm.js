@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import StarRating from "react-star-rating-component";
+import RatingSlider from "./RatingSlider";
 import "./TastingForm.css";
 class TastingForm extends Component {
   nameRef = React.createRef();
@@ -8,7 +10,19 @@ class TastingForm extends Component {
   tastedateRef = React.createRef();
   beverageRef = React.createRef();
   ratingRef = React.createRef();
-  notebook = {};
+  bodyRef = React.createRef();
+  stoneFruitRef = React.createRef();
+  acidityRef = React.createRef();
+  chocolateRef = React.createRef();
+  caramelRef = React.createRef();
+  xxxRef = React.createRef();
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      rating: 0,
+      notebook: {}
+    };
+  }
   saveCoffee = e => {
     e.preventDefault();
     let coffee = {
@@ -18,10 +32,19 @@ class TastingForm extends Component {
       roastdate: this.roastdateRef.current.value,
       tastedate: this.tastedateRef.current.value,
       beverage: this.beverageRef.current.value,
-      rating: this.ratingRef.current.value
+      rating: this.ratingRef.current.state.value,
+      notes: {
+        body: this.bodyRef.current.state.rating,
+        caramel: this.caramelRef.current.state.rating,
+        chocolate: this.chocolateRef.current.state.rating,
+        stoneFruit: this.stoneFruitRef.current.state.rating,
+        xxx: this.xxxRef.current.state.rating,
+      }
     };
-    this.notebook[Date.now()] = coffee;
-    console.log(this.notebook);
+    this.setState(prev => {
+      prev.notebook[Date.now()] = coffee;
+    });
+    console.log(this.state.notebook);
   };
   render() {
     return (
@@ -78,52 +101,45 @@ class TastingForm extends Component {
           name="beverage"
           placeholder="Beverage"
         />
-        <label htmlFor="rating">Overall Rating</label>
-        <input
-          ref={this.ratingRef}
-          type="range"
-          min="0"
-          max="5"
-          id="tasteform-rating"
-          className="rating"
-          name="rating"
+        <div className="input-group rating" id="tasteform-cupping">
+          <label htmlFor="rating">Overall Rating</label>
+          <StarRating
+            ref={this.ratingRef}
+            starColor={`#ffb400`}
+            emptyStarColor={`#ccc`}
+            starCount={8}
+            id="tasteform-rating"
+            className="star rating"
+            name="rating"
+          />
+        </div>
+        <div className="flex-container sliders">
+        <RatingSlider
+          ref={this.bodyRef}
+          name="Body"
+          id="cupping-note-body"
         />
-        <div className="input-group number" id="tasteform-cupping">
-          <label htmlFor="body" className="cupping-note body">
-            Body
-          </label>
-          <input
-            name="body"
-            id="cupping-note-body"
-            type="number"
-            min="0"
-            max="10"
+        <RatingSlider
+          ref={this.caramelRef}
+          name="Caramel"
+          id="cupping-note-caramel"
+        />
+        <RatingSlider
+          ref={this.chocolateRef}
+          name="Chocolate"
+          id="cupping-note-chocolate"
+        />
+        <RatingSlider
+          ref={this.stoneFruitRef}
+          name="Stone Fruit"
+          id="cupping-note-stone-fruit"
+        />
+        <RatingSlider
+          ref={this.xxxRef}
+          name="XXX"
+          id="cupping-note-XXX"
           />
-        </div>
-        <div className="input-group number" id="tasteform-cupping">
-          <label htmlFor="stone-fruit" className="cupping-note stone-fruit">
-            Stone Fruit
-          </label>
-          <input
-            name="stone-fruit"
-            id="cupping-note-stone-fruit"
-            type="number"
-            min="0"
-            max="10"
-          />
-        </div>
-        <div className="input-group number" id="tasteform-cupping">
-          <label htmlFor="XXX" className="cupping-note XXX">
-            XXX
-          </label>
-          <input
-            name="XXX"
-            id="cupping-note-XXX"
-            type="number"
-            min="0"
-            max="10"
-          />
-        </div>
+          </div>
         <textarea
           className="other-notes"
           id="tasteform-other-notes"

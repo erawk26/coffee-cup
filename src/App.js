@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './img/logo.svg';
 import TastingForm from './TastingForm'
 import './App.css';
 
-class App extends Component {
-  state = {
-    notebook:{
 
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      notebook: {
+        1528725188646: {
+          beverage: "Espresso",
+          name: "erik",
+          origin: "colombia",
+          rating: "2",
+          roaster: "me",
+          roastdate: "8/25/2018",
+          tastedate: "2/12/2018",
+          cupscores: {
+            body: 1,
+            acidity: 3,
+            stonefruit: 3
+          }
+        },
+      }
     }
-  }
+    }
   render() {
     return (
       <div className="App">

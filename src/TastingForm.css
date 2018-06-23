@@ -14,10 +14,14 @@ form.tasting {
   width: 100%;
   margin: 0 15px 15px;
 }
+.dv-star-rating-star {
+}
+.dv-star-rating-star i {
+  font-size: xx-large;
+}
 .form-header,
 input,
-textarea,
-.input-group.number {
+textarea {
   box-sizing: border-box;
   max-width: 100%;
   width: 100%;
@@ -29,4 +33,23 @@ textarea,
 }
 .input-group.number {
   padding: 15px;
+  display: inline-block;
+}
+.input-group label {
+  display: block;
+}
+.input-group.rating {
+  display: block;
+  width: 100%;
+}
+.flex-container.sliders {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sliders {
+  flex: 1;
+}
+ul.rangeslider__labels {
+  display: none;
 }
