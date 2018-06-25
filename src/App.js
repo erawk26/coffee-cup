@@ -9,20 +9,6 @@ class App extends Component {
     super();
     this.state = {
       notebook: {
-        1528725188646: {
-          beverage: "Espresso",
-          name: "erik",
-          origin: "colombia",
-          rating: "2",
-          roaster: "me",
-          roastdate: "8/25/2018",
-          tastedate: "2/12/2018",
-          cupscores: {
-            body: 1,
-            acidity: 3,
-            stonefruit: 3
-          }
-        },
       }
     }
     }
