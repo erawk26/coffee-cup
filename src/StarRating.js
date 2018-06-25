@@ -14,13 +14,18 @@ class StarRating extends Component {
   }
 
   onStarClickHalfStar(nextValue, prevValue, name, e) {
-    const xPos =
-      (e.pageX - e.currentTarget.getBoundingClientRect().left) /
-      e.currentTarget.offsetWidth;
 
-    if (xPos <= 0.5) {
-      nextValue -= 0.5;
-    }
+    // const xPos =
+    //   (e.pageX - e.currentTarget.getBoundingClientRect().left) /
+    //   e.currentTarget.offsetWidth;
+
+    // if (xPos <= 0.5) {
+    //   nextValue -= 0.5;
+    // }
+
+//     ---------------------------------
+// ENABLE ABOVE THIS LINE TO TURN ON HALF POINTS
+//     ---------------------------------
 
     // console.log(
     //   "name: %s, nextValue: %s, prevValue: %s",
@@ -29,7 +34,9 @@ class StarRating extends Component {
     //   prevValue
     // );
     // console.log(e);
+
     this.setState({ value: nextValue });
+
   }
 
   render() {
