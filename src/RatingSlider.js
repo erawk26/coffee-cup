@@ -17,12 +17,23 @@ class RatingSlider extends Component {
 
   render() {
     let { rating } = this.state;
-    return <div className="input-group number">
+    return (
+      <div className="input-group number">
         <label className="cupping-note">
-          {this.props.name}<br/>{this.state.rating}
+          {this.props.name}
+          <br />
+          <strong>{this.state.rating}</strong>
         </label>
-        <Slider min={0} max={10} step={0.5} value={rating} orientation="vertical" onChange={this.handleOnChange} />
-      </div>;
+        <Slider
+          min={0}
+          max={10}
+          step={0.5}
+          value={rating}
+          orientation="vertical"
+          onChange={this.handleOnChange}
+        />
+      </div>
+    );
   }
 }
 export default RatingSlider;
