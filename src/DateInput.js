@@ -20,14 +20,18 @@ function formatDate(date, format, locale) {
 }
 class DateInput extends Component {
   render() {
-    const FORMAT = "M/D/YYYY";
+    const FORMAT = "MMM Do, YYYY";
     return (
       <DayPickerInput
         ref={el => (this.input = el)}
         formatDate={formatDate}
         format={FORMAT}
         parseDate={parseDate}
-        // placeholder={`${dateFnsFormat(new Date(), FORMAT)}`}
+        dayPickerProps={{
+          todayButton: "Today",
+          disabledDays: [{ before: this.props.before }]
+        }}
+        placeholder={this.props.placeholder}
       />
     );
   }
