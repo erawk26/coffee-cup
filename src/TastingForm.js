@@ -3,49 +3,68 @@ import StarRating from "./StarRating";
 import RatingSlider from "./RatingSlider";
 import DateInput from "./DateInput";
 import "./TastingForm.css";
+
 class TastingForm extends Component {
   nameRef = React.createRef();
+
   originRef = React.createRef();
+
   roasterRef = React.createRef();
+
   roastdateRef = React.createRef();
+
   tastedateRef = React.createRef();
+
   beverageRef = React.createRef();
+
   ratingRef = React.createRef();
+
   bodyRef = React.createRef();
+
   stoneFruitRef = React.createRef();
+
   acidityRef = React.createRef();
+
   chocolateRef = React.createRef();
+
   caramelRef = React.createRef();
+
   xxxRef = React.createRef();
+
   constructor(props, context) {
     super(props, context);
     this.state = {
-      notebook: {}
+      notebook: {},
+      current: {}
     };
   }
+
+  currentState = e => ({
+    name: this.nameRef.current.value,
+    origin: this.originRef.current.value,
+    roaster: this.roasterRef.current.value,
+    roastdate: this.roastdateRef.current.input.state.value,
+    tastedate: this.tastedateRef.current.input.state.value,
+    beverage: this.beverageRef.current.value,
+    rating: this.ratingRef.current.state.value,
+    notes: {
+      body: this.bodyRef.current.state.rating,
+      caramel: this.caramelRef.current.state.rating,
+      chocolate: this.chocolateRef.current.state.rating,
+      stoneFruit: this.stoneFruitRef.current.state.rating,
+      xxx: this.xxxRef.current.state.rating
+    }
+  });
+
   saveCoffee = e => {
     e.preventDefault();
-    let coffee = {
-      name: this.nameRef.current.value,
-      origin: this.originRef.current.value,
-      roaster: this.roasterRef.current.value,
-      roastdate: this.roastdateRef.current.input.state.value,
-      tastedate: this.tastedateRef.current.input.state.value,
-      beverage: this.beverageRef.current.value,
-      rating: this.ratingRef.current.state.value,
-      notes: {
-        body: this.bodyRef.current.state.rating,
-        caramel: this.caramelRef.current.state.rating,
-        chocolate: this.chocolateRef.current.state.rating,
-        stoneFruit: this.stoneFruitRef.current.state.rating,
-        xxx: this.xxxRef.current.state.rating
-      }
-    };
     this.setState(prev => {
-      prev.notebook[Date.now()] = coffee;
+      prev.current = this.currentState();
+      prev.notebook[Date.now()] = this.currentState();
     });
-    console.log(this.state.notebook);
+    console.log(this.state);
   };
+
   render() {
     return (
       <form id="tastingForm" className="tasting" onSubmit={this.saveCoffee}>

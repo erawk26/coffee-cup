@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import logo from './img/logo.svg';
-import TastingForm from './TastingForm'
+import TastingForm from './controlledInputs';
 import './App.css';
 
-
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      notebook: {
-      }
-    }
-    }
   render() {
     return (
       <div className="App">
@@ -20,9 +12,10 @@ class App extends Component {
           <h1 className="App-title">Welcome to yet another Coffee Cupping App</h1>
         </header>
         <p className="App-intro">
-          This is the begginings of a react app for cupping various coffees and saving notes/data for them.
+          This is the begginings of a react app for cupping various coffees and saving notes/data
+          for them.
         </p>
-        <TastingForm/>
+        <TastingForm />
       </div>
     );
   }

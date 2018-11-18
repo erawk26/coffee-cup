@@ -14,12 +14,13 @@ form.tasting {
   width: 100%;
   margin: 0 15px 15px;
 }
-.dv-star-rating-star {
-}
+/* .dv-star-rating-star {
+} */
 .dv-star-rating-star i {
   font-size: xx-large;
 }
 .form-header,
+.form-intro,
 input,
 textarea {
   box-sizing: border-box;

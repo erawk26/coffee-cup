@@ -15,13 +15,13 @@ class StarRating extends Component {
 
   onStarClickHalfStar(nextValue, prevValue, name, e) {
 
-    // const xPos =
-    //   (e.pageX - e.currentTarget.getBoundingClientRect().left) /
-    //   e.currentTarget.offsetWidth;
+    const xPos =
+      (e.pageX - e.currentTarget.getBoundingClientRect().left) /
+      e.currentTarget.offsetWidth;
 
-    // if (xPos <= 0.5) {
-    //   nextValue -= 0.5;
-    // }
+    if (xPos <= 0.5) {
+      nextValue -= 0.5;
+    }
 
 //     ---------------------------------
 // ENABLE ABOVE THIS LINE TO TURN ON HALF POINTS
@@ -45,6 +45,7 @@ class StarRating extends Component {
         starColor={`#ffb400`}
         emptyStarColor={`#ccc`}
         starCount={5}
+        name="star-rating"
         value={this.state.value}
         onStarClick={this.onStarClickHalfStar.bind(this)}
         renderStarIcon={(index, value) => {
@@ -61,7 +62,6 @@ class StarRating extends Component {
             </span>
           );
         }}
-        name="star-rating"
       />
     );
   }
